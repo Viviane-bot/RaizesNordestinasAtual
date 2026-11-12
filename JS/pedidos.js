@@ -1,0 +1,169 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+    const CHAVE_CARRINHO = "raizesNordestinasCart";
+    const CHAVE_PEDIDOS = "raizesPedidosDemo";
+
+    const ler = (chave) => {
+        try {
+            return JSON.parse(localStorage.getItem(chave) || "[]");
+        } catch {
+            return [];
+        }
+    };
+
+    const dinheiro = (valor) =>
+        Number(valor).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+
+    // Captura o envio do formulário existente no carrinho.
+    const carrinho = document.querySelector("#cart-content");
+
+    if (carrinho) {
+        carrinho.addEventListener("submit", (evento) => {
+            if (evento.target.id !== "checkout-form") return;
+
+            evento.preventDefault();
+            evento.stopImmediatePropagation();
+
+            const formulario = evento.target;
+            if (!formulario.reportValidity()) return;
+
+            const dados = new FormData(formulario);
+            const itens = ler(CHAVE_CARRINHO);
+
+            if (!itens.length) {
+                alert("Adicione produtos ao carrinho.");
+                return;
+            }
+
+            const entrega = dados.get("delivery");
+            const endereco = String(dados.get("address") || "").trim();
+
+            if (entrega === "Entrega" && !endereco) {
+                alert("Informe o endereço para entrega.");
+                return;
+            }
+
+            const total = itens.reduce(
+                (soma, item) =>
+                    soma + Number(item.price) * Number(item.quantity),
+                0
+            );
+
+            
+            const cupom = String(dados.get("cupom") || "")
+                .trim()
+                .toUpperCase();
+
+            let desconto = 0;
+
+            if (cupom === "RAIZES10") {
+                desconto = Math.round(total * 0.10 * 100) / 100;
+            } else if (cupom === "NORDESTE5" && total >= 30) {
+                desconto = 5;
+            } else if (cupom !== "") {
+                alert("Cupom inválido ou pedido abaixo do valor mínimo.");
+                return;
+            }
+
+            const totalComDesconto =
+                Math.round((total - desconto) * 100) / 100;
+
+
+            const pedido = {
+                id: "RN-" + Date.now(),
+                cliente: String(dados.get("customer")).trim(),
+                telefone: String(dados.get("phone")).trim(),
+                entrega,
+                endereco,
+                observacoes: String(dados.get("notes") || ""),
+                itens: itens.map(item => ({ ...item })),
+                subtotal: total,
+                cupom: cupom || null,
+                desconto: desconto,
+                total: totalComDesconto,
+                status: "Recebido",
+                data: new Date().toISOString()
+            };
+
+            const pedidos = ler(CHAVE_PEDIDOS);
+            pedidos.push(pedido);
+
+            localStorage.setItem(
+                CHAVE_PEDIDOS,
+                JSON.stringify(pedidos)
+            );
+
+            localStorage.removeItem(CHAVE_CARRINHO);
+
+            window.location.href = "meus-pedidos.html";
+        }, true);
+    }
+
+    // Exibe o histórico na página de pedidos.
+    const lista = document.querySelector("#lista-pedidos");
+
+    if (lista) {
+        const pedidos = ler(CHAVE_PEDIDOS).reverse();
+
+        if (!pedidos.length) {
+            lista.textContent = "Você ainda não possui pedidos.";
+            return;
+        }
+
+        pedidos.forEach((pedido) => {
+            const artigo = document.createElement("article");
+            artigo.className = "pedido-card";
+
+            const titulo = document.createElement("h2");
+            titulo.textContent = "Pedido " + pedido.id;
+
+            const data = document.createElement("p");
+            data.textContent = new Date(
+                pedido.data
+            ).toLocaleString("pt-BR");
+
+            const produtos = document.createElement("p");
+            produtos.textContent = pedido.itens
+                .map(item => `${item.quantity}x ${item.name}`)
+                .join(", ");
+
+            const total = document.createElement("p");
+            total.textContent = "Total: " + dinheiro(pedido.total);
+
+            const status = document.createElement("p");
+            status.textContent = "Status: " + pedido.status;
+
+            
+            const pagamento = document.createElement("p");
+            pagamento.textContent =
+                "Pagamento: " +
+                (pedido.pagamento?.status || "Não iniciado");
+
+            const linkPagamento = document.createElement("a");
+            linkPagamento.className = "button button-primary";
+            linkPagamento.href =
+                "pagamento.html?pedido=" + encodeURIComponent(pedido.id);
+
+            linkPagamento.textContent =
+                pedido.pagamento?.status === "Aprovado"
+                    ? "Consultar pagamento"
+                    : "Realizar pagamento";
+
+            artigo.append(
+                titulo,
+                data,
+                produtos,
+                total,
+                status,
+                pagamento,
+                linkPagamento
+            );
+            
+            
+            lista.appendChild(artigo);
+        });
+    }
+});

@@ -1,0 +1,94 @@
+
+/* Layout base para celulares */
+
+.pagamento-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f8f3eb;
+}
+
+.pagamento-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 24px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+
+.pagamento-card h1 {
+    margin: 24px 0 12px;
+    color: #244536;
+}
+
+#resumo-pagamento {
+    margin: 24px 0;
+    padding: 18px;
+    background: #f8f3eb;
+    border-radius: 12px;
+}
+
+#form-pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#form-pagamento[hidden] {
+    display: none;
+}
+
+#form-pagamento select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#form-pagamento button {
+    min-height: 48px;
+}
+
+#retorno-pagamento {
+    margin-top: 24px;
+}
+
+.resultado-pagamento {
+    padding: 16px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.resultado-pagamento.aprovado {
+    color: #17633c;
+    background: #e6f6eb;
+}
+
+.resultado-pagamento.pendente {
+    color: #805500;
+    background: #fff3d4;
+}
+
+.resultado-pagamento.recusado {
+    color: #a12626;
+    background: #fde9e9;
+}
+
+@media (min-width: 768px) {
+    .pagamento-card {
+        padding: 40px;
+    }
+}
+
+/* Resumo único do pedido e total consolidado */
+.pagamento-itens { list-style: none; padding: 0; margin: 16px 0; }
+.pagamento-itens li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #e6dccc; }
+.pagamento-itens li span { min-width: 0; overflow-wrap: anywhere; }
+.pagamento-itens li strong { white-space: nowrap; }
+.pagamento-valores { margin-top: 16px; }
+.pagamento-valores p { margin: 8px 0; }
+.pagamento-total { border-top: 2px solid #244536; padding-top: 14px; font-size: 1.3rem; font-weight: 800; color: #244536; }

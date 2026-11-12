@@ -1,0 +1,202 @@
+
+/* Painel administrativo - Mobile-First */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f8f3eb;
+    color: #263a30;
+    font-family: Arial, sans-serif;
+}
+
+.admin-header {
+    background: #244536;
+    color: white;
+    padding: 24px 16px;
+}
+
+.admin-header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.admin-subtitle {
+    color: #e7c68d;
+    margin: 0 0 8px;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.7rem;
+}
+
+.admin-back {
+    color: white;
+    text-decoration: underline;
+}
+
+.admin-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px 48px;
+}
+
+.admin-notice {
+    padding: 12px;
+    border-radius: 10px;
+    background: #fff0d7;
+    font-size: 0.9rem;
+}
+
+.admin-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.admin-stat {
+    background: white;
+    border: 1px solid #e8dccd;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.admin-stat span {
+    display: block;
+    font-size: 0.85rem;
+    color: #59685f;
+}
+
+.admin-stat strong {
+    display: block;
+    font-size: 2rem;
+    margin-top: 10px;
+    color: #244536;
+}
+
+.admin-section {
+    background: white;
+    border: 1px solid #e8dccd;
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 24px;
+}
+
+.admin-section h2 {
+    margin-top: 0;
+    color: #244536;
+}
+
+.admin-section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.admin-section-header p {
+    color: #657168;
+}
+
+.admin-section select,
+.admin-pedido select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+}
+
+.admin-pedido {
+    border: 1px solid #e8dccd;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+    overflow-wrap: anywhere;
+}
+
+.admin-pedido h3 {
+    margin-top: 0;
+    color: #244536;
+}
+
+.admin-pedido p {
+    line-height: 1.5;
+}
+
+.admin-pedido label {
+    display: block;
+    font-weight: bold;
+    margin: 16px 0 8px;
+}
+
+.admin-pedido button {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 12px;
+    padding: 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #244536;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.admin-pedido button:hover {
+    background: #37644d;
+}
+
+.admin-promocoes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+.admin-promo {
+    background: #f8f3eb;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.admin-promo h3 {
+    color: #a84d2b;
+}
+
+/* Tablets e computadores */
+@media (min-width: 768px) {
+    .admin-header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .admin-container {
+        padding: 32px 24px 60px;
+    }
+
+    .admin-summary {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .admin-section {
+        padding: 28px;
+    }
+
+    .admin-promocoes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-pedido button {
+        width: auto;
+    }
+}

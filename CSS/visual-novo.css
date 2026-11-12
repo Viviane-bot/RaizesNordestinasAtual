@@ -1,0 +1,55 @@
+/* Renovação visual Raízes Nordestinas — mobile-first */
+:root{--ink:#20372d;--muted:#65736a;--cream:#f6efe4;--paper:#fffdfa;--coral:#b96742;--coral-dark:#974d30;--yellow:#d7ac65;--green:#244536;--line:#e9e2d6;--shadow:0 18px 45px rgba(25,50,35,.10)}
+body{background:#fcfaf6;color:var(--ink)}
+.site-header{background:rgba(255,253,249,.97);box-shadow:0 3px 20px rgba(20,40,30,.05);padding:14px 5%}
+.brand-mark{background:#e9f0e8;border:1px solid #dbe6d8;border-radius:15px}
+.brand strong{font-weight:850;letter-spacing:-.045em}
+.brand small{color:#9b6a47}
+.site-nav a{font-size:.86rem;padding:10px 11px;border-radius:999px;white-space:nowrap}
+.site-nav a.active,.site-nav a:hover{background:#e7efe7;color:#244536}
+.site-nav a[href="carrinho.html"]{background:#244536;color:white}
+.site-nav a[href="carrinho.html"]:hover{background:#35644b}
+.cart-count{background:#d7ac65;color:#20372d}
+.hero{background:radial-gradient(circle at 14% 12%,#fff4dd,transparent 44%),linear-gradient(125deg,#fbf5e9,#f2eee4);gap:28px;padding-top:54px;padding-bottom:64px}
+.hero-content{position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,9vw,5.1rem);line-height:1.04;letter-spacing:-.065em}
+.hero h1 em{color:#a95435}
+.hero-content>p{font-size:1.08rem;line-height:1.75}
+.eyebrow{color:#a45b39;letter-spacing:.14em}
+.button{border-radius:999px;padding:12px 22px;transition:transform .2s,background .2s,box-shadow .2s}
+.button-primary{background:#244536;box-shadow:0 9px 20px rgba(36,69,54,.18)}
+.button-primary:hover{background:#37654e;box-shadow:0 12px 25px rgba(36,69,54,.23)}
+.button-outline{background:#fffdf9;border-color:#cbbba7}
+.button-dark{background:#244536}
+.hero-art{max-width:560px;min-height:350px;aspect-ratio:4/4;overflow:visible;background:transparent;border-radius:30px}
+.hero-photo{width:100%;height:100%;position:absolute;inset:0;overflow:hidden;border-radius:32px 32px 90px 32px;box-shadow:0 24px 60px rgba(64,55,31,.19);background:#ead6b3}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.floating-tag{z-index:2;border:1px solid #fff9;padding:10px 14px;border-radius:999px;background:#fffdf6ee;color:#244536;box-shadow:0 10px 28px #263a3026}
+.tag-one{top:8%;left:-2%}.tag-two{right:-2%;top:55%}.tag-three{bottom:5%;left:3%}
+.section{padding-top:66px;padding-bottom:72px}
+.section-light{background:#fffdfa}
+.section-heading h2,.story-strip h2{color:#244536}
+.feature-card{border:1px solid #e9e2d6;background:#fff;border-radius:24px;box-shadow:0 8px 26px #1d3b2710;transition:transform .2s,box-shadow .2s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 16px 35px #1d3b271c}
+.story-strip{background:#eaf0e7;border-top:1px solid #dce6d9}
+.site-footer{background:#1d372b}
+.brand-footer .brand-mark{background:#335340}
+.page-hero{background:linear-gradient(135deg,#eaf0e7,#fff7ea);padding-top:60px;padding-bottom:55px}
+.page-hero h1{color:#244536}
+.filter-row{gap:10px;padding-bottom:22px}
+.filter-button{background:#fffdf9;border-color:#ddd6c8;padding:11px 18px}
+.filter-button.active,.filter-button:hover{background:#244536;border-color:#244536}
+.menu-card{overflow:hidden;border:1px solid #e9e2d6;border-radius:23px;background:#fff;box-shadow:0 8px 26px rgba(32,55,45,.08);transition:transform .22s,box-shadow .22s}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 20px 35px rgba(32,55,45,.14)}
+.menu-art{height:215px;min-height:0;overflow:hidden;background:#f4e8d6;padding:0}
+.menu-art img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.menu-card:hover .menu-art img{transform:scale(1.045)}
+.menu-card-body{padding:20px}
+.menu-category{color:#a65c39;font-weight:800;letter-spacing:.09em}
+.menu-card-bottom strong{color:#244536;font-size:1.16rem}
+.menu-card-bottom .button{background:#244536;border-radius:999px}
+.menu-card-bottom .button:hover{background:#37654e}
+.cart-summary,.admin-notice{background:#eaf0e7}
+@media(min-width:800px){.site-header{padding:15px 3%}.site-nav{flex-wrap:wrap;justify-content:flex-end;max-width:76%;gap:2px}.hero{grid-template-columns:1fr 1fr;gap:6%;padding-top:85px;padding-bottom:95px}.hero-art{min-height:440px}.menu-art{height:205px}}
+@media(min-width:1150px){.site-nav{flex-wrap:nowrap;max-width:none}.site-nav a{font-size:.82rem;padding:9px 10px}.hero-art{min-height:490px}}
+@media(max-width:380px){.hero-art{min-height:285px}.floating-tag{font-size:.68rem;padding:7px 9px}}

@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo | Raízes Nordestinas</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/visual-novo.css">
+    <link rel="stylesheet" href="CSS/admin.css">
+
+    <script src="JS/admin.js" defer></script>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-header-content">
+            <div>
+                <p class="admin-subtitle">🌵 Raízes Nordestinas</p>
+                <h1>Painel Administrativo</h1>
+            </div>
+
+            <a href="index.html" class="admin-back">
+                Voltar ao site
+            </a>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <p class="admin-notice">
+            Ambiente demonstrativo acadêmico.
+            Os dados são armazenados neste navegador.
+        </p>
+
+        <section class="admin-summary"
+                 aria-label="Resumo dos pedidos">
+
+            <article class="admin-stat">
+                <span>Total de pedidos</span>
+                <strong id="total-pedidos">0</strong>
+            </article>
+
+            <article class="admin-stat">
+                <span>Em preparo</span>
+                <strong id="pedidos-preparo">0</strong>
+            </article>
+
+            <article class="admin-stat">
+                <span>Entregues</span>
+                <strong id="pedidos-entregues">0</strong>
+            </article>
+
+            <article class="admin-stat">
+                <span>Pagamentos aprovados</span>
+                <strong id="pagamentos-aprovados">0</strong>
+            </article>
+        </section>
+
+        <section class="admin-section">
+            <div class="admin-section-header">
+                <div>
+                    <h2>Gerenciar pedidos</h2>
+                    <p>Consulte e atualize o andamento.</p>
+                </div>
+
+                <label for="filtro-status">
+                    Filtrar por status
+                </label>
+
+                <select id="filtro-status">
+                    <option value="Todos">Todos</option>
+                    <option value="Recebido">Recebidos</option>
+                    <option value="Em preparo">Em preparo</option>
+                    <option value="Pronto">Prontos</option>
+                    <option value="Entregue">Entregues</option>
+                </select>
+            </div>
+
+            <div id="admin-lista-pedidos"
+                 aria-live="polite">
+            </div>
+        </section>
+
+        <section class="admin-section">
+            <h2>Promoções ativas</h2>
+
+            <div class="admin-promocoes">
+                <article class="admin-promo">
+                    <h3>RAIZES10</h3>
+                    <p>10% de desconto no pedido.</p>
+                </article>
+
+                <article class="admin-promo">
+                    <h3>NORDESTE5</h3>
+                    <p>R$ 5 de desconto em pedidos
+                       a partir de R$ 30.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
